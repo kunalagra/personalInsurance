@@ -1,7 +1,5 @@
 
 from app import app
-from flask import request, session
-import json
 
 import pandas as pd
 import numpy as np
@@ -26,4 +24,6 @@ linreg.intercept_
 
 def calc_insurance(age, bmi, smoking,sex):
     y = ((age*linreg.coef_[0]) + (bmi*linreg.coef_[1]) + (smoking*linreg.coef_[2]) + (sex*linreg.coef_[3]) - linreg.intercept_)
-    return y
+    a="Your Personalized Premium is: ₹"+'{:,d}'.format(int(y))
+    data = {"prem":a}
+    return data

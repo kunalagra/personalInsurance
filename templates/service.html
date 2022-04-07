@@ -14,7 +14,7 @@
   <header>
     <img src="../static/img/logo.png" alt="Lifesafe-logo" class="logo" />
     <div class="brand-name">Lifesafe Insurance</div>
-
+    
     <nav>
       <ul>
         <li>
@@ -50,30 +50,38 @@
       <div class="form-container">
         <h2>Start With a Free Custom Quote</h2>
         <!-- <p>Got questions? Let us know and we will reach you on time. </p> -->
-        <form action="#">
-          <label for="name-input">Name</label>
-          <input id="name-input" placeholder="Name" type="text" required />
-          <label for="email-input">Email Address</label>
-          <input id="email-input" placeholder="Email Address" type="email" required />
-          <label for="address-input">Address</label>
-          <textarea name="message" placeholder="Address" id="address-input" required></textarea>
-          <select required>
-            <option>Policy Type</option>
-            <option>Car Insurance</option>
-            <option>Car + Home</option>
-            <option>Car + Life</option>
-            <option>Car + Home + Life</option>
-          </select>
-          <input type="submit" id="submit-button" role="button" />
-        </form>
+        <div class="contact-form">
+          <form action="/getPremium" id="getQuote" method="POST" onsubmit="send(event,this)"">
+            <input required type="text" placeholder="Name" />
+            <input required type="number" maxlength="2" placeholder="Age" name="age" min="1">
+            <input required type="number" maxlength="2" placeholder="BMI" name="bmi" min="1" step="any">
+            <label for="smoker">Smoker: </label>
+            <select name="smoker" id="smoker" required>
+              <option value=""></option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+            <label for="gender">Gender: </label>
+            <select name="gender" id="gender" required>
+              <option value=""></option>
+              <option value="1">Male</option>
+              <option value="0">Female</option>>
+            </select>
+            <br>
+            <button type="submit" name="button" id="button">Get Quote</button>
+            <br><br>
+            <div id="uname_response" ></div>
+            
+          </form>
+        </div>
       </div>
     </div>
   </div>
-
+  
   <section class="benifits">   
-   <button>Ready To get a quote?</button>
+    <button>Ready To get a quote?</button>
   </section>
-
+  
   <section class="faqs">
     <h1>
       Frequently asked questions
@@ -83,7 +91,7 @@
         <h4 class="q">
           Why do I need health insurance?
         </h4>
-
+        
         <p class="ans">
           Health insurance plans assist you in protecting yourself and your 
           near and dear ones from any financial risks or uncertainties that 
@@ -92,10 +100,10 @@
           savings and assets when medical emergencies are on the rise.
         </p>
       </div>
-
+      
       <div class="faq">
         <h4 class="q">What is the cashless facility?</h4>
-
+        
         <p class="ans">
           During hospitalisation, normally insured has to pay the hospital 
           bill/treatment expenses out of pocket. Under a cashless facility 
@@ -106,34 +114,34 @@
           hospitalisation across India.
         </p>
       </div>
-
+      
       <div class="faq">
         <h4 class="q">Does health insurance cover diagnoistic charges?</h4>
-
+        
         <p class="ans">
           All our health insurance plans cover diagnostic tests like X-ray,
-           MRI, blood tests and more, as long as they are associated with the 
-           in-patient hospitalisation for more than 24 hours. If the diagnostic 
-           tests are done for evaluation/investigation without positive existence 
-           of illness are not payable.
+          MRI, blood tests and more, as long as they are associated with the 
+          in-patient hospitalisation for more than 24 hours. If the diagnostic 
+          tests are done for evaluation/investigation without positive existence 
+          of illness are not payable.
         </p>
       </div>
-
+      
       <div class="faq">
         <h4 class="q">
           Do I have to undergo any medical examination before buying a health insurance?
         </h4>
-
+        
         <p class="ans">
           Yes, you may have to undergo medical tests before buying a health insurance. 
           Also, some health insurance policies ask for it only if you have a pre existing 
           illness or you are above 40 years old.
         </p>
       </div>
-
+      
       <div class="faq">
         <h4 class="q">What is the Benefit of Buying Health Insurance At A Young Age?</h4>
-
+        
         <p class="ans">
           You get to pay a lower premium and higher benefits. Probability of having a 
           pre-existing illness is low hence waiting periods may also not impact you. 
@@ -141,12 +149,12 @@
           age so staying covered even when you are young is important..
         </p>
       </div>
-
+      
       <div class="faq">
         <h4 class="q">
           What are the things I should consider before buying my health insurance policy?
         </h4>
-
+        
         <p class="ans">
           Before making a health insurance policy purchase, it is advisable for you to 
           consider your medical needs, the type of plan you want to invest in, features 
@@ -156,7 +164,7 @@
       </div>
     </div>
   </section>
-
+  
   <section class="others">
     <h1>Other Insurances</h1>
     <div class="insurances">
@@ -167,7 +175,7 @@
           Safeguarding your business from any normal or hyper disaster.
         </p>
       </div>
-
+      
       <div class="insurance">
         <img src="../static/img/home-insurance.png" alt="" />
         <h4>Home Insurance</h4>
@@ -175,7 +183,7 @@
           Recovery of house after fire/disaster/theft on home.
         </p>
       </div>
-
+      
       <div class="insurance">
         <img src="../static/img/family.png" alt="" />
         <h4>Life Insurance</h4>
@@ -184,12 +192,19 @@
         </p>
       </div>
     </div>
-
+    
     <button>Browse&nbsp;All</button>
   </section>
   <footer>
     Copyright&copy;2022
   </footer>
 </body>
-
+<script>
+  function send(e,form) {
+    fetch(form.action, {method:'post', body: new FormData(form)}).then(response => response.json()).then(data => {
+      document.getElementById("uname_response").innerHTML =data['prem'];
+    });
+    e.preventDefault();
+  }
+</script>
 </html>
