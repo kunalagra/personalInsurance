@@ -201,10 +201,10 @@
 </body>
 <script>
   function send(e,form) {
-    fetch(form.action, {method:'post', body: new FormData(form)}).then(response => response.json()).then(data => {
-      document.getElementById("uname_response").innerHTML =data['prem'];
-    });
     e.preventDefault();
+    fetch(form.action, {method:'post', body: new FormData(form)}).then(response => response.json()).then(data => {
+      document.getElementById("uname_response").innerHTML ="Your Personalized Health Premium is: ₹"+ data['prem'];
+    });
   }
 </script>
 </html>
