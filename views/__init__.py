@@ -5,7 +5,6 @@ from model import *
 
 @app.route('/', methods=["GET"])
 def home():
-    print(calc_insurance(36, 24, 0,1))
     return render_template('index.html')
 
 @app.route('/getPremium', methods=["POST"])
