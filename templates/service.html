@@ -55,6 +55,12 @@
             <input required type="text" placeholder="Name" />
             <input required type="number" maxlength="2" placeholder="Age" name="age" min="1">
             <input required type="number" maxlength="2" placeholder="BMI" name="bmi" min="1" step="any">
+            <label for="alcohol">Alcohol: </label>
+            <select name="alcohol" id="alcohol" required>
+              <option value=""></option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
             <label for="smoker">Smoker: </label>
             <select name="smoker" id="smoker" required>
               <option value=""></option>
@@ -66,6 +72,20 @@
               <option value=""></option>
               <option value="1">Male</option>
               <option value="0">Female</option>>
+            </select>
+            <label for="quit">Ready to Quit Smoking And Alcohol: </label>
+            <select name="quit" id="quit" required>
+              <option value=""></option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+            <label for="occupation">Occupation: </label>
+            <select name="occupation" id="occupation" required>
+              <option value=""></option>
+              <option value="10">Loggers</option>
+              <option value="11">Pilotes</option>
+              <option value="12">FireFighters</option>
+              <option value="13">Others</option>
             </select>
             <br>
             <button type="submit" name="button" id="button">Get Quote</button>
@@ -87,6 +107,17 @@
       Frequently asked questions
     </h1>
     <div class="faq-container">
+      <div class="faq">
+        <h4 class="q">
+          How a person can reduce amount paid as the premium?
+        </h4>
+        
+        <p class="ans">
+          <b>1.</b> If the person is ready to quit smoking and drinkng then his/her premium amount can be reduced by <b>4%</b><br>
+          <b>2.</b> If the person is not in any risk taking job then his/her premium will be less than the person involved in risk taking jobs.<br>
+          <b>3.</b> If the person is not suffering from Obesity.<br>
+        </p>
+      </div>
       <div class="faq">
         <h4 class="q">
           Why do I need health insurance?
