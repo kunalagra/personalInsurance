@@ -10,7 +10,7 @@ def home():
 @app.route('/getPremium', methods=["POST"])
 def getPremium():
     values = [request.form[k] for k in request.form]
-    return calc_insurance(int(request.form['age']),float(request.form['bmi']),int(request.form['smoker']),int(request.form['gender']))
+    return calc_insurance(int(request.form['age']),float(request.form['bmi']),int(request.form['smoker']),int(request.form['gender']),int(request.form['quit']),int(request.form['alcohol']),int(request.form['occupation']))
 
 @app.route('/404', methods=["GET"])
 def errorpage():
